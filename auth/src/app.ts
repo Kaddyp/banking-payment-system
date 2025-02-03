@@ -16,4 +16,16 @@ setupSwagger(app);
 // Routes
 app.use('/api/auth', authRoutes);
 
+// Route that throws NotFoundError
+app.all('*', async (req, res, next) => {
+    try {
+      res.status(400).json({ message: 'Resource not found' });
+      return;
+    } catch (error) {
+      // Default error handler (for any other errors)
+      res.status(500).json({ message: 'Internal Server Error' });
+      return;
+    }
+});
+
 export { app };

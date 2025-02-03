@@ -1,6 +1,5 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import 'dotenv/config';
 import pool from '../config/db';
 import { User } from '../types/user';
 import { generateToken } from "../utils/jwtUtils";

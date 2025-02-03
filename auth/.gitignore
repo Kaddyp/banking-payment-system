@@ -1,3 +1,75 @@
-node_modules
+# Node.js specific
+node_modules/
+package-lock.json
+
+# React specific
+build/
+dist/
+.eslintcache
+
+# Logs
+logs/
+*.log
+*.log.*
+logs/*
+
+# OS generated files
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
+._*
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Testing
+coverage/
+*.lcov
+
+# Environment variables
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.prod
+.env.qa
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Parcel-bundler cache (if applicable)
+.cache/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Generated artifacts
+*.out
+*.log
+
+# TSC output directory (commonly `dist/`)
+dist/
+lib/
+
+# Miscellaneous
+*.bak
+*.orig
+*.rej
+*.seed
+
+# Ignore private keys
+*.pem
+
+# Editor backups
+*~
