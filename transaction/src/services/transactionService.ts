@@ -18,5 +18,16 @@ const transactionService = {
         return { status: 500, success: false, message: "Internal Server Error" };
     }
   },
+  /*** Get All Transactions ***/
+  async getAllTransactions(): Promise<{ status: number; success: boolean; data: Transaction[] }> {
+    try {
+      const result = await pool.query("SELECT * FROM transactions ORDER BY created_at DESC;");
+      return { status: 200, success: true, data: result.rows as Transaction[]};
+    } catch (error) {
+      console.error("Internal Server Error Error:", error);
+      throw new Error("Internal Server Error");
+    }
+  },
+  
 }
 export default transactionService;

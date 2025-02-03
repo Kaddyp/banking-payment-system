@@ -43,5 +43,25 @@ const transactionController = {
         const result = await transactionService.processTransaction(req.body);
         res.status(result.status).json(result);        
     },
+
+/**
+ * @swagger
+ * /api/transactions:
+ *   get:
+ *     summary: Get all transactions
+ *     description: Handles a new payment transaction request.
+ *     tags: [Get All Transactions]
+ *     responses:
+ *       200:
+ *         description: List of transactions
+ */
+    async getAllTransaction(req: Request, res: Response): Promise<void>  {
+        try {
+            const result = await transactionService.getAllTransactions();
+            res.status(result.status).json(result);
+          } catch (error) {
+            res.status(500).json({ error: 'Failed to fetch transactions.' });
+          }
+    }
 }
 export default transactionController;
