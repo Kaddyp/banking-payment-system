@@ -12,4 +12,7 @@ router.get('/', transactionController.getAllTransaction);
 // Get a transaction by ID
 router.get('/:id', transactionController.getTransactionById);
 
+// delete a transaction by ID
+router.delete('/:id', transactionController.deleteTransaction);
+
 export default router;

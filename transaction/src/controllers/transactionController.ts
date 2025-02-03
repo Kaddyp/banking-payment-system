@@ -9,7 +9,8 @@ const transactionController = {
  *   post:
  *     summary: Process a new payment transaction
  *     description: Handles a new payment transaction request.
- *     tags: [Transactions]
+ *     tags:
+ *       - Transactions
  *     requestBody:
  *       required: true
  *       content:
@@ -50,7 +51,8 @@ const transactionController = {
  *   get:
  *     summary: Get all transactions
  *     description: Get all transaction request.
- *     tags: [Get All Transactions]
+ *     tags:
+ *       - Transactions
  *     responses:
  *       200:
  *         description: List of transactions
@@ -68,8 +70,9 @@ const transactionController = {
  * /api/transactions/{id}:
  *   get:
  *     summary: Get a transaction by ID
- *     description: Get transaction by id.
- *     tags: [Get transaction by id]
+ *     description: Get transaction by ID.
+ *     tags:
+ *       - Transactions
  *     parameters:
  *       - in: path
  *         name: id
@@ -88,5 +91,30 @@ const transactionController = {
       res.status(500).json({ error: 'Failed to fetch transaction.' });
     }
   },
+
+/**
+ * @swagger
+ * /api/transactions/{id}:
+ *   delete:
+ *     summary: Delete a transaction by ID
+ *     description: Delete a transaction by ID.
+ *     tags:
+ *       - Transactions
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Transaction deleted successfully
+ */
+  async deleteTransaction(req: Request, res: Response): Promise<void> {
+    try {
+      const result = await transactionService.deleteTransactionById(req.params.id);
+      res.status(result.status).json(result);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to delete transaction.' });
+    }
+  }
 }
 export default transactionController;

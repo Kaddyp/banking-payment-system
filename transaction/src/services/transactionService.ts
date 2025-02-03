@@ -28,6 +28,7 @@ const transactionService = {
       throw new Error("Internal Server Error");
     }
   },
+
   /*** Get Transaction By ID ***/
   async getTransactionById(id: string): Promise<{ status: number; success: boolean; message?: string, data?: Transaction | null }> {
     try {
@@ -42,5 +43,18 @@ const transactionService = {
     }
   },
   
+  /*** Delete Transaction By ID ***/
+  async deleteTransactionById(id: string): Promise<{ status: number; success: boolean; message?: string }> {
+    try {
+      const result = await pool.query("DELETE FROM transactions WHERE id = $1;", [id]);
+      if (result.rowCount === 0) {
+        return { status: 404, success: false, message: "Transaction not found" };
+      }
+      return { status: 200, success: true, message: "Transaction deleted successfully" };
+    } catch (error) {
+      console.error("Internal Server Error Error:", error);
+      throw new Error("Internal Server Error");
+    }
+  },
 }
 export default transactionService;
