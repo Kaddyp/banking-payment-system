@@ -25,6 +25,10 @@ const transactionController = {
  *                 type: string
  *                 enum: [USD, EUR, GBP]
  *                 example: USD
+ *               status:
+ *                 type: string
+ *                 enum: [PENDING, SUCCESS, FAILED, REFUNDED]
+ *                 example: PENDING
  *               paymentMethod:
  *                 type: string
  *                 enum: [CARD, MOBILE_WALLET, CASH]
