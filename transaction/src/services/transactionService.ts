@@ -1,6 +1,6 @@
 import pool from '../config/db';
 import { Transaction } from '../models/transactionModel';
-import { v4 as uuidv4 } from "uuid";
+import { producer } from "../utils/kafka";
 
 const transactionService = {
   /*** Process Transaction ***/  
@@ -13,6 +13,25 @@ const transactionService = {
           [amount, currency, status, paymentMethod]
         );
         return { status: 201, success: true, message: "Transaction successfully processed."};
+
+        // Generate transaction UUID
+        // const transactionId = crypto.randomUUID();
+        
+        // const transaction = {
+        //   id: transactionId,
+        //   amount,
+        //   currency,
+        //   status,
+        //   paymentMethod,
+        //   createdAt: new Date(),
+        // };
+        // // Send transaction to Kafka
+        // await producer.send({
+        //   topic: "transaction-queue",
+        //   messages: [{ value: JSON.stringify(transaction) }],
+        // });
+        // return { status: 202, success: true, message: "Transaction queued"};
+
     } catch (error) {
         console.error("Internal Server Error Error:", error);
         return { status: 500, success: false, message: "Internal Server Error" };

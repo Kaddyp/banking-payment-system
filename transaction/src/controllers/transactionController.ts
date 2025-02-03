@@ -8,7 +8,7 @@ const transactionController = {
  * /api/transactions/process:
  *   post:
  *     summary: Process a new payment transaction
- *     description: Handles a new payment transaction request.
+ *     description: Handles a new payment transaction request. (Queued via Kafka)
  *     tags:
  *       - Transactions
  *     requestBody:
